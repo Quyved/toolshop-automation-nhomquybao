@@ -20,6 +20,7 @@ class HomePage(BasePage):
         self.no_results = page.get_by_test_id("no-results")
         self.sort_select = page.get_by_test_id("sort")
         self.sorting_completed = page.get_by_test_id("sorting_completed")
+        self.filter_completed = page.get_by_test_id("filter_completed")
         self.product_prices = page.get_by_test_id("product-price")
         # TODO B2/B4 (later): price_slider_max = page.get_by_role("slider").nth(1)
 
@@ -41,6 +42,10 @@ class HomePage(BasePage):
     def sort_by(self, value: str):
         """value: name,asc | name,desc | price,asc | price,desc"""
         self.sort_select.select_option(value)
+        return self
+
+    def filter_by_category(self, category_name: str):
+        self.page.get_by_label(category_name).check()
         return self
 
     def product_card(self, name: str):
