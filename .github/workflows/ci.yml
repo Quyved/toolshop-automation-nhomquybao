@@ -44,7 +44,7 @@ jobs:
 
       - name: Run tests
         run: >
-          pytest -m smoke --browser ${{ matrix.browser }}
+          pytest --browser ${{ matrix.browser }}
           -n 2 --reruns 1
           --tracing retain-on-failure --screenshot only-on-failure
           --html=report.html --self-contained-html
